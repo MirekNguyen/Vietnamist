@@ -6,46 +6,31 @@
 <link rel="stylesheet" href="CSS.css">
 
 <body>
+   <div class="center">
+      <div class="card" style="height: 50px; line-height: 50px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: #F5F6F9;    padding-top: 10px; padding-bottom: 10px;font-size: 30px; font-weight: bold;">Vietnamist</div>
+      <div class="card" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;box-shadow: 6px 8px rgba(100, 100, 100, 0.3);">
+         <div id='id'></div>
+         <div id='englishWord'></div>
+         <br>
+         <div class='sentence' id='sentence'></div>
+         <p id="englishText"></p>
+         <input id='answer' hidden>
+         <input id='phoneticAnswer' hidden>
+         <input id='vietnameseText' hidden>
+         <br>
+         <button onclick="wordToSpeech()">Play answer</button>
+         <button onclick="textToSpeech()">Play sentence</button>
+      </div>
+   </div>
+   <!--- End of class "center" --->
+   <script src="Javascript.js"></script>
    <?php
-   // Load environment variables to connect to database
+   // Load environment API key for 'responsivevoice.org'
    require 'vendor/autoload.php';
    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
    $dotenv->load();
-   $host = $_ENV['PG_HOST'];
-   $database = $_ENV['PG_DATABASE'];
-   $user = $_ENV['PG_USER'];
-   $pass = $_ENV['PG_PASSWORD'];
-   $port = $_ENV['PG_PORT'];
-   $key = $_ENV['VOICE_KEY'];
-
-   $connection = pg_connect("host=$host port=$port dbname=$database user=$user password=$pass");
-   if (!$connection)
-      echo "Problem with connection" . "<br>";
-
-   $number = pg_num_rows(pg_query($connection, "SELECT id FROM $database"));
-   $random = rand(0, 0);
-
-   $result = pg_query($connection, "select * from $database WHERE id='$random' ORDER BY id");
-   $row = pg_fetch_object($result);
-   if ($row->vietnamese_text != NULL) {
-      $length = strlen($row->simple_word);
-      $sentence = str_replace("$row->vietnamese_word", "<input type=\"text\" id=\"inputField\" value=\"\" size=\"$length\" maxlength=\"$length\" style=\"outline:none;  \" autofocus>", $row->vietnamese_text);
-      echo "id: " . $row->id . "<br>" . $row->english_word . "<br>" . $sentence . " " . "<br>";
-   } else
-      echo $row->id . " " . $row->english_word . " " . $row->vietnamese_word . " " . $row->english_text . " " . $row->vietnamese_text . " " . "<br>";
-   pg_close($connection);
    ?>
-   <p id="englishText" style="display:none;"><?php echo $row->english_text ?></p>
-   <input type="submit" id="submitButton" onclick="answer()"><br>
-   <?php echo "<input id='answer' value='$row->simple_word' hidden>"; ?>
-   <?php echo "<input id='phoneticAnswer' value='$row->vietnamese_word' hidden>"; ?>
-   <?php echo "<input id='vietnameseText' value='$row->vietnamese_text' hidden>"; ?>
-   <button onclick="wordToSpeech()">Play answer</button>
-   <button onclick="textToSpeech()">Play sentence</button>
-   <script src="Javascript.js"></script>
-   <script src="https://code.responsivevoice.org/responsivevoice.js?key=<?php echo $key; ?>"></script>
+   <script src="https://code.responsivevoice.org/responsivevoice.js?key=<?php echo $_ENV['VOICE_KEY']; ?>"></script>
 </body>
-
-</html>
 
 </html>
