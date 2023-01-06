@@ -23,7 +23,7 @@ if (isset($_GET["id"])) {
                 "SELECT vietnamese_word FROM $database WHERE vietnamese_word IS NOT NULL"
             )
         );
-        $random = rand(0, $number);
+        $random = rand(0, $number - 1);
         $result = pg_query(
             $connection,
             "select * from $database WHERE id='$random' ORDER BY id"
