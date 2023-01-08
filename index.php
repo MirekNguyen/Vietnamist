@@ -12,14 +12,21 @@
             <div id='id'></div>
             <div id='englishWord'></div>
             <br>
-            <div class='sentence' id='sentence'></div>
+            <div class='sentence' id='sentence'>
+            </div>
             <p id="englishText"></p>
             <input id='answer' hidden>
             <input id='phoneticAnswer' hidden>
             <input id='vietnameseText' hidden>
-            <br>
-            <button onclick="wordToSpeech()">Play answer</button>
-            <button onclick="textToSpeech()">Play sentence</button>
+            <br />
+            <p>[Press Enter to answer or click
+                <button onclick="answer()" style="display:inline-block;">Answer ↵</button>
+                ]
+            </p>
+            <br />
+            <span>Audio hint: </span>
+            <button onclick="wordToSpeech()">♫ Play answer</button>
+            <button onclick="textToSpeech()">♫ Play sentence</button>
         </div>
     </div>
     <!--- End of class "center" --->
