@@ -9,8 +9,10 @@
     <div class="center">
         <div class="card" style="height: 50px; line-height: 50px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: #F5F6F9;    padding-top: 10px; padding-bottom: 10px;font-size: 30px; font-weight: bold;">Vietnamist</div>
         <div class="card" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;box-shadow: 6px 8px rgba(100, 100, 100, 0.3);">
-            <div id='id'></div>
-            <div id='englishWord'></div>
+            <div id='id' style="padding-top: 10px;"></div>
+            <div style="font-size: 20px;">
+                <span id='englishWord' style='background-color: #F5F5F5; padding: 1px 8px 1px 8px; border-radius: 4px;'></span>
+            </div>
             <br>
             <div class='sentence' id='sentence'>
             </div>

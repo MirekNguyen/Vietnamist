@@ -38,10 +38,9 @@ function ajax() {
   const englishWord = document.getElementById("englishWord");
   const englishText = document.getElementById("englishText");
   const vietnameseText = document.getElementById("vietnameseText");
-  const id = document.getElementById("id");
   let xml = new XMLHttpRequest();
-  xml.open("GET", "AJAX.php?id=" + id.innerHTML, true);
-  xml.onload = function() {
+  xml.open("GET", "AJAX.php", true);
+  xml.onload = function () {
     if (this.responseText === "400") {
       sentence.innerHTML = "Problem with connection. Error 400.";
     } else {
@@ -49,11 +48,11 @@ function ajax() {
       sentence.innerHTML = arr.vietnamese_text;
       correctAnswer.value = arr.simple_word;
       phoneticAnswer.value = arr.vietnamese_word;
-      id.innerHTML = "ID: " + arr.id;
       englishWord.innerHTML = arr.english_word;
       englishText.innerHTML = arr.english_text;
       phoneticAnswer.value = arr.vietnamese_word;
       vietnameseText.value = arr.fullText;
+      document.getElementById("inputField").focus();
     }
   };
   xml.send();
