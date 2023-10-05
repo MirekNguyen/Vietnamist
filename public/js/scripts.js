@@ -1,6 +1,16 @@
 window.addEventListener("keydown", checkKey, false);
 window.onload = ajax;
 
+document.addEventListener('DOMContentLoaded', function () {
+    const answerBtn = document.getElementById('answerBtn');
+    const playAnswerBtn = document.getElementById('playAnswerBtn');
+    const playSentenceBtn = document.getElementById('playSentenceBtn');
+
+    answerBtn.addEventListener('click', answer);
+    playAnswerBtn.addEventListener('click', wordToSpeech);
+    playSentenceBtn.addEventListener('click', textToSpeech);
+});
+
 function checkKey(key) {
   if (key.keyCode === 13) {
     answer();
