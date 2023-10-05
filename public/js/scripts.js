@@ -39,7 +39,7 @@ function ajax() {
   const englishText = document.getElementById("englishText");
   const vietnameseText = document.getElementById("vietnameseText");
   let xml = new XMLHttpRequest();
-  xml.open("GET", "AJAX.php", true);
+  xml.open("GET", "../../../src/ajaxhandler.php", true);
   xml.onload = function () {
     if (this.responseText === "400") {
       sentence.innerHTML = "Problem with connection. Error 400.";

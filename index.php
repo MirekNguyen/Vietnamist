@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <title>Vietnamist</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="CSS.css">
+<link rel="stylesheet" href="./public/styles/styles.css">
 
 <body>
     <div class="center">
@@ -32,11 +32,11 @@
         </div>
     </div>
     <!--- End of class "center" --->
-    <script src="Javascript.js"></script>
+    <script src="./public/js/scripts.js"></script>
     <?php
     // Load environment API key for 'responsivevoice.org'
-    require 'vendor/autoload.php';
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    require __DIR__ . '/vendor/autoload.php';
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/config/");
     $dotenv->load();
     ?>
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=<?php echo $_ENV['VOICE_KEY']; ?>"></script>

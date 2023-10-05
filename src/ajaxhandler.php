@@ -5,8 +5,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     return;
 }
 // Load environment variables to connect to database
-require "vendor/autoload.php";
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+require __DIR__ . "/../vendor/autoload.php";
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../config/");
 $dotenv->load();
 $host = $_ENV["PG_HOST"];
 $database = $_ENV["PG_DATABASE"];
